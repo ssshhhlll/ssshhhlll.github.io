@@ -1,0 +1,100 @@
+---
+title: "Dashboard"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+library(plotly)
+library(flexdashboard)
+library(p8105.datasets)
+```
+
+
+```{r}
+data("instacart", package = "p8105.datasets")
+
+insta <- instacart %>%
+  mutate(
+    order_dow = factor(
+      order_dow, levels = 0:6,
+      labels = c("Sun","Mon","Tue","Wed","Thu","Fri","Sat")
+    ),
+    order_hour_of_day = as.integer(order_hour_of_day)
+  )
+```
+
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+aisle_top15 <- insta %>%
+  count(aisle, name = "n", sort = TRUE) %>%
+  slice_head(n = 15) %>%
+  mutate(aisle = fct_reorder(aisle, n))
+
+plot_ly(
+  data = aisle_top15,
+  x = ~aisle, y = ~n, type = "bar"
+) %>%
+  layout(
+    title = "Top 15 Aisles by Number of Items",
+    xaxis = list(title = "", tickangle = -45),
+    yaxis = list(title = "Count")
+  )
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+dow_hour_counts <- insta %>%
+  count(order_dow, order_hour_of_day, name = "n")
+
+plot_ly(
+  data = dow_hour_counts,
+  x = ~order_hour_of_day, y = ~n,
+  color = ~order_dow, colors = "Set2",
+  type = "scatter", mode = "lines+markers"
+) %>%
+  layout(
+    title = "Orders by Hour across Days of Week",
+    xaxis = list(title = "Hour of Day"),
+    yaxis = list(title = "Number of Items")
+  )
+```
+
+### Chart C
+
+```{r}
+dept_top8 <- insta %>% count(department, sort = TRUE) %>% slice_head(n = 8)
+
+cart_order_dept <- insta %>%
+  semi_join(dept_top8, by = "department") %>%
+  select(department, add_to_cart_order) %>%
+  group_by(department) %>%
+  slice_head(n = 5000) %>%
+  ungroup() %>%
+  mutate(department = fct_reorder(department, add_to_cart_order, median))
+
+
+plot_ly(
+  data = cart_order_dept,
+  x = ~department, y = ~add_to_cart_order,
+  type = "box", color = ~department, boxpoints = "outliers"
+) %>%
+  layout(
+    title = "Add-to-Cart Order by Department (Top 8)",
+    xaxis = list(title = ""),
+    yaxis = list(title = "Add-to-Cart Order (position)"),
+    showlegend = FALSE
+  )
+```
