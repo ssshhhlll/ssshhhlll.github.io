@@ -1,0 +1,22 @@
+---
+title: "Home"
+author: "Mutian Li"
+date: "2025-10-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Welcome
+
+Hi! I'm **Mutian Li**, a Biostatistics student at Columbia University (Mailman School of Public Health).  
+This is my personal website for P8105 Homework 4.
+
+---
+
+### Navigation
+
+- [GitHub](https://github.com/ssshhhlll)
+- [Email Me](ml5308@cumc.columbia.edu)
