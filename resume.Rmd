@@ -1,0 +1,42 @@
+---
+title: "Resume"
+author: "Mutian Li"
+date: "2025-10-29"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Academic Background 🎓
+
+- **Columbia University**, M.S. in Biostatistics  
+  *Mailman School of Public Health, Expected May 2027*
+
+- **University of Washington**, B.S. in Applied Mathematics  
+  *Focus: Scientific Computing, Data Science*
+
+---
+
+## Professional Experience 💼
+
+- **Research Assistant**, University of Washington  
+  - Worked on computational modeling of infectious disease spread (SIR and SEIR models)  
+  - Analyzed large-scale epidemiological datasets using R and Python
+
+- **Data Analyst Intern**, Qingdao Choho Industrial Co., Ltd.  
+  - Cleaned and visualized ERP/MES production data  
+  - Automated KPI dashboards in BI systems
+
+---
+
+## Technical Skills 🧠
+
+- **Programming:** R, Python, C++, SQL, Java, Matlab
+- **Tools:** GitHub, RStudio
+- **Specialized:** Data Visualization, Machine Learning, Statistical Modeling
+
+---
+
+[← Back to Home](index.html)
