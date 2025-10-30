@@ -21,4 +21,4 @@ This is my personal website for P8105 Homework 4.
 - [Resume](resume.html)
 - [GitHub](https://github.com/ssshhhlll)
 - [Email Me](mailto:ml5308@cumc.columbia.edu)
-- [Problem 2](dashboard.html)
+- [Problem 2 Dashboard](dashboard.html)
